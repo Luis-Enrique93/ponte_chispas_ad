@@ -1,0 +1,15 @@
+version: '3.5'
+
+
+services:
+  ponte_chispas_api:
+    container_name: ponte_chispas_ad
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
