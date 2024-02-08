@@ -1,14 +1,33 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Query } from '@nestjs/common'
 import { AppService } from './app.service'
+import { ActiveDirectory } from './lib/active.directory'
+import { Dto } from './dto'
+
 
 @Controller()
 export class AppController 
 {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) { }
+
 
     @Get()
     public async getHello() 
     {
-        return await this.appService.getHello();
+        return await this.appService.getHello()
+    }
+
+
+    @Get('/login')
+    public async login(@Query() loginData: Dto) 
+    {
+        ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
+        {
+            // assert.ifError(err);
+            if (err)
+                console.log('err:' + err)
+
+            else
+                console.log('success')
+        })
     }
 }

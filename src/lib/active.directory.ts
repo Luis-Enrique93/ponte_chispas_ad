@@ -28,15 +28,8 @@ export class ActiveDirectory
             url: `ldap://${ip}:${port}`,
         })
 
-        ActiveDirectory.client.bind(`uid=${user},ou=system`, password, (err) =>
-        {
-            // assert.ifError(err);
-            if (err)
-                console.log('err:' + err)
-
-            else
-                console.log('success')
-        })
+        console.log('Active Directory client:')
+        console.log(ActiveDirectory.client)
     }
 
 
