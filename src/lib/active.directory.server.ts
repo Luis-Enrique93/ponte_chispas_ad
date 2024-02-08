@@ -6,13 +6,14 @@ export class ActiveDirectoryServer
 {
     public static server: Server
 
-    
+
     private constructor() 
     {
         console.log('Active Directory: Starting server...')
         ActiveDirectoryServer.server = createServer()
-        
-        ActiveDirectoryServer.server.search('o=example', (req, res, next) => {
+
+        ActiveDirectoryServer.server.search('o=example', (req, res, next) =>
+        {
             console.log('req: ', req)
             console.log('endpoint')
 
@@ -23,10 +24,10 @@ export class ActiveDirectoryServer
                     o: 'example'
                 }
             }
-          
+
             if (req.filter.matches(obj.attributes))
                 res.send(obj)
-          
+
             res.end()
         })
 
@@ -45,7 +46,7 @@ export class ActiveDirectoryServer
     {
         console.log('server: ', ActiveDirectoryServer.server)
 
-        ActiveDirectory.Start()
+        // ActiveDirectory.Start()
     }
 
 
