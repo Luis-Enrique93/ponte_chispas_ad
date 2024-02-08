@@ -2,7 +2,7 @@ version: '3.5'
 
 
 services:
-  ponte_chispas_api:
+  ponte_chispas_ad:
     container_name: ponte_chispas_ad
     build:
       context: .
