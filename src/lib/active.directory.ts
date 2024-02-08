@@ -5,16 +5,31 @@ export class ActiveDirectory
 {
     public static client: Client
 
-    
-    private constructor() 
+
+    private constructor(ip, port, user, password) 
     {
         console.log('Active Directory: Starting client...')
 
+        // ActiveDirectory.client = createClient({
+        //     url: `ldap://127.0.0.1:10389`,
+        // })
+
+        // ActiveDirectory.client.bind('uid=admin,ou=system', 'secret', (err) =>
+        // {
+        //     // assert.ifError(err);
+        //     if (err)
+        //         console.log('err:' + err)
+
+        //     else
+        //         console.log('success')
+        // })
+
         ActiveDirectory.client = createClient({
-            url: `ldap://127.0.0.1:10389`,
+            url: `ldap://${ip}:${port}`,
         })
 
-        ActiveDirectory.client.bind('uid=admin,ou=system', 'secret', (err) => {
+        ActiveDirectory.client.bind(`uid=${user},ou=system`, password, (err) =>
+        {
             // assert.ifError(err);
             if (err)
                 console.log('err:' + err)
@@ -25,9 +40,9 @@ export class ActiveDirectory
     }
 
 
-    public static Start()
+    public static Start(ip, port, user, password)
     {
         if (!ActiveDirectory.client)
-            new ActiveDirectory()
+            new ActiveDirectory(ip, port, user, password)
     }
 }
