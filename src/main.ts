@@ -6,10 +6,13 @@ import { ValidationPipe } from '@nestjs/common'
 
 async function bootstrap() 
 {
+    console.log(process.env)
+    console.log(process.env.ACTIVE_DIRECTORY_PORT)
+    console.log(process.env.ACTIVE_DIRECTORY_IP)
     try
     {
         ActiveDirectory.Start(
-            process.env.ACTIVE_DIRECTORY_IP1,
+            process.env.ACTIVE_DIRECTORY_IP,
             process.env.ACTIVE_DIRECTORY_PORT,
             process.env.ACTIVE_DIRECTORY_USERNAME,
             process.env.ACTIVE_DIRECTORY_PASSWORD

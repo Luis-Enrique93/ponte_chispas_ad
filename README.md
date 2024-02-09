@@ -4,3 +4,8 @@ cd ~/.ssh
 eval $(ssh-agent -s)
 ssh-add promoton
 
+cd ~/ponte_chispas_ad
+
+
+
+docker ps -a
