@@ -10,8 +10,4 @@ export class Dto
     @IsNotEmpty()
     @IsString()
     public readonly password: string
-
-    @IsNotEmpty()
-    @IsNumber()
-    public readonly empresa: number
 }
