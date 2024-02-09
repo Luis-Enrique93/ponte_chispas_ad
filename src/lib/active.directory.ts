@@ -26,6 +26,7 @@ export class ActiveDirectory
 
         ActiveDirectory.client = createClient({
             url: `ldap://${ip}:${port}`,
+            reconnect: true,
         })
 
         console.log('Active Directory client:')

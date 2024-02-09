@@ -13,7 +13,8 @@ export class AppController
     @Get()
     public async getHello() 
     {
-        return await this.appService.getHello()
+        // return await this.appService.getHello()
+        return 'hola'
     }
 
 
