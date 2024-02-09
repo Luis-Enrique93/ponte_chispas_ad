@@ -1,13 +1,17 @@
-import { IsNotEmpty, IsString } from 'class-validator'
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator'
 
 
 export class Dto
 {
     @IsNotEmpty()
     @IsString()
-    user: string
+    public readonly user: string
 
     @IsNotEmpty()
     @IsString()
-    password: string
+    public readonly password: string
+
+    @IsNotEmpty()
+    @IsNumber()
+    public readonly empresa: number
 }
