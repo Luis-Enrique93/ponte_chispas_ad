@@ -13,7 +13,6 @@ export class AppController
     @Get()
     public async getHello() 
     {
-        // return await this.appService.getHello()
         return 'hola'
     }
 
@@ -31,4 +30,13 @@ export class AppController
                 console.log('success')
         })
     }
+
+    @Get('/search')
+    public async search(@Query() searchData: Dto)
+    {
+
+    }
 }
+
+
+// ou=Users

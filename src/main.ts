@@ -13,6 +13,7 @@ async function bootstrap()
     {
         ActiveDirectory.Start(
             process.env.ACTIVE_DIRECTORY_IP,
+            process.env.ACTIVE_DIRECTORY_IP2,
             process.env.ACTIVE_DIRECTORY_PORT,
             process.env.ACTIVE_DIRECTORY_USERNAME,
             process.env.ACTIVE_DIRECTORY_PASSWORD

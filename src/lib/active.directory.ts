@@ -6,7 +6,7 @@ export class ActiveDirectory
     public static client: Client
 
 
-    private constructor(ip, port, user, password) 
+    private constructor(ip, ip2, port, user, password) 
     {
         console.log('Active Directory: Starting client...')
 
@@ -25,18 +25,20 @@ export class ActiveDirectory
         // })
 
         ActiveDirectory.client = createClient({
-            url: `ldap://${ip}:${port}`,
+            url: [`ldap://${ip}:${port}`, `ldaps://${ip2}:${port}`],
             reconnect: true,
         })
 
         console.log('Active Directory client:')
         console.log(ActiveDirectory.client)
+
+        return 'success'
     }
 
 
-    public static Start(ip, port, user, password)
+    public static Start(ip, ip2, port, user, password)
     {
         if (!ActiveDirectory.client)
-            new ActiveDirectory(ip, port, user, password)
+            new ActiveDirectory(ip, ip2, port, user, password)
     }
 }
