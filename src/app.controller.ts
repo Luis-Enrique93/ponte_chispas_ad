@@ -20,15 +20,22 @@ export class AppController
     @Get('/login')
     public async login(@Query() loginData: Dto) 
     {
-        ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
+        try
         {
-            // assert.ifError(err);
-            if (err)
-                console.log('err:' + err)
+            ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
+            {
+                // assert.ifError(err);
+                if (err)
+                    console.log('err:' + err)
 
-            else
-                console.log('success')
-        })
+                else
+                    console.log('success')
+            })
+        }
+        catch (e)
+        {
+            console.log(e)
+        }
     }
 
     @Get('/search')

@@ -1,4 +1,4 @@
-import { createClient, Client, SearchOptions } from 'ldapjs'
+import { createClient, Client } from 'ldapjs'
 
 
 export class ActiveDirectory
