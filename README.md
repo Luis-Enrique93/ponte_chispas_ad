@@ -61,3 +61,8 @@ entry: {
 }
 
 curl "http://localhost:4000/search?query=ou=users,ou=system"
+curl "http://localhost:4000/search?query=cn=users,dc=bot,dc=corp"
+curl "http://localhost:4000/search?query=OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp"
+
+
+OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp

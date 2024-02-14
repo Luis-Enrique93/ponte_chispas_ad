@@ -16,11 +16,10 @@ export class AppService
 
     constructor() { }
 
-    // promotong
-    // Administrator
+
     public async getHello(search: string = 'cn=users,dc=bot,dc=corp')
     {
-        ActiveDirectory.client.search(search, this.opts, (err, res) =>
+        ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
             {
