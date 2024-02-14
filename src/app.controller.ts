@@ -38,7 +38,7 @@ export class AppController
     }
 
     @Get('/search')
-    public async search(@Query() searchData: Dto)
+    public async search()
     {
         await this.appService.getHello()
     }
