@@ -30,10 +30,10 @@ export class AppService
             // este es el que importa
             res.on('searchEntry', (entry) =>
             {
-                console.log('-----')
+                console.log('----- start -----')
                 console.log(entry?.pojo)
                 console.log(entry?.pojo.attributes[0].values)
-                console.log('-----')
+                console.log('----- end -----')
             })
 
             res.on('searchReference', (referral) =>
