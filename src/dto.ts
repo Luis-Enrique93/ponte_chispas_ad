@@ -11,3 +11,11 @@ export class Dto
     @IsString()
     public readonly password: string
 }
+
+
+export class SearchDto
+{
+    @IsNotEmpty()
+    @IsString()
+    public readonly search: string
+}

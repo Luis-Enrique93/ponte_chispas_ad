@@ -10,20 +10,6 @@ export class ActiveDirectory
     {
         console.log('Active Directory: Starting client...')
 
-        // ActiveDirectory.client = createClient({
-        //     url: `ldap://127.0.0.1:10389`,
-        // })
-
-        // ActiveDirectory.client.bind('uid=admin,ou=system', 'secret', (err) =>
-        // {
-        //     // assert.ifError(err);
-        //     if (err)
-        //         console.log('err:' + err)
-
-        //     else
-        //         console.log('success')
-        // })
-
         console.log('creando cliente')
         ActiveDirectory.client = createClient({
             url: [
@@ -34,9 +20,8 @@ export class ActiveDirectory
         })
 
         console.log('logueando')
-        ActiveDirectory.client.bind('uid=admin,ou=system', password, (err) =>
+        ActiveDirectory.client.bind(user, password, (err) =>
         {
-            // assert.ifError(err);
             if (err)
                 console.log('err:' + err)
 
@@ -46,38 +31,6 @@ export class ActiveDirectory
                 console.log('logueado!')
             }
         })
-
-
-
-        // console.log('Active Directory client:')
-        // console.log(ActiveDirectory.client)
-
-        // const ad = new activedirectory({
-        //     url: `ldap://${ip}:${port}`,
-        //     baseDN: 'dc=bot,dc=corp',
-        // })
-
-        // console.log(ad)
-
-        // ad.authenticate(user, password, (err, auth) =>
-        // {
-        //     console.log('authenticating...')
-
-        //     if (err)
-        //     {
-        //         console.log('ERROR: ' + JSON.stringify(err))
-        //         return
-        //     }
-
-        //     if (auth)
-        //     {
-        //         console.log('Authenticated!')
-        //     }
-        //     else
-        //     {
-        //         console.log('Authentication failed!')
-        //     }
-        // })
 
         return 'success'
     }

@@ -1,7 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common'
 import { AppService } from './app.service'
-import { ActiveDirectory } from './lib/active.directory'
-import { Dto } from './dto'
+import { SearchDto } from './dto'
 
 
 @Controller()
@@ -17,32 +16,9 @@ export class AppController
     }
 
 
-    @Get('/login')
-    public async login(@Query() loginData: Dto) 
-    {
-        console.log('loginData')
-        console.log(loginData)
-        console.log('logueando')
-
-        ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
-        {
-            console.log('err')
-            console.log(err)
-            console.log('ejecutando condicionales')
-            // assert.ifError(err);
-            if (err) console.log('err:' + err)
-            else console.log('success')
-        })
-
-        return 'ok'
-    }
-
     @Get('/search')
-    public async search()
+    public async search(@Query() search: SearchDto)
     {
-        await this.appService.getHello()
+        await this.appService.getHello(search.search)
     }
 }
-
-
-// ou=Users

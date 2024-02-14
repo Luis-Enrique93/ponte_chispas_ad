@@ -8,17 +8,19 @@ export class AppService
 {
     public opts: SearchOptions = {
         filter: '(objectClass=*)',
-        scope: 'sub',
-        attributes: ['sn', 'cn']
+        // scope: 'base', // no ver sub carpetas
+        scope: 'sub', // para ver sub carpetas
+        // attributes: ['sn', 'cn']
     }
 
 
     constructor() { }
 
-
-    public async getHello()
+    // promotong
+    // Administrator
+    public async getHello(search: string = 'cn=users,dc=bot,dc=corp')
     {
-        ActiveDirectory.client.search('ou=users,ou=system', this.opts, (err, res) =>
+        ActiveDirectory.client.search(search, this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
             {
@@ -28,7 +30,10 @@ export class AppService
             // este es el que importa
             res.on('searchEntry', (entry) =>
             {
-                console.log('entry: ' + JSON.stringify(entry.pojo))
+                console.log('-----')
+                console.log(entry?.pojo)
+                console.log(entry?.pojo.attributes[0].values)
+                console.log('-----')
             })
 
             res.on('searchReference', (referral) =>

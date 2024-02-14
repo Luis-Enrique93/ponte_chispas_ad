@@ -35,3 +35,29 @@ C       countryName
 STREET  streetAddress
 DC      domainComponent
 UID     userid
+
+
+
+
+
+entry: {
+    "messageId":2,
+    "protocolOp":100,
+    "type":"SearchResultEntry",
+    "objectName":"ou=users,ou=system",
+    "attributes":[],"controls":[]
+}
+
+entry: {
+    "messageId":2,
+    "protocolOp":100,
+    "type":"SearchResultEntry",
+    "objectName":"cn=mike,ou=users,ou=system",
+    "attributes":[
+        {"type":"sn","values":["jhon"]},
+        {"type":"cn","values":["mike"]}
+    ],
+    "controls":[]
+}
+
+curl "http://localhost:4000/search?query=ou=users,ou=system"
