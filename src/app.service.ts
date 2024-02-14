@@ -10,8 +10,8 @@ export class AppService
         filter: '(objectClass=*)',
         scope: 'base',
         // scope: 'sub', para ver sub carpetas
-        // attributes: ['dn', 'sn', 'cn']
-        attributes: ['sn', 'cn']
+        attributes: ['dn', 'sn', 'cn']
+        // attributes: ['sn', 'cn']
     }
 
 
