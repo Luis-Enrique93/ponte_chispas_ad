@@ -1,5 +1,4 @@
 import { createClient, Client } from 'ldapjs'
-import * as activedirectory from 'activedirectory'
 
 
 export class ActiveDirectory
@@ -35,7 +34,7 @@ export class ActiveDirectory
         })
 
         console.log('logueando')
-        ActiveDirectory.client.bind(`cn=${user}`, password, (err) =>
+        ActiveDirectory.client.bind(user, password, (err) =>
         {
             // assert.ifError(err);
             if (err)

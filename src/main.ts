@@ -10,6 +10,7 @@ async function bootstrap()
     console.log(process.env)
     console.log(process.env.ACTIVE_DIRECTORY_PORT)
     console.log(process.env.ACTIVE_DIRECTORY_IP)
+
     try
     {
         ActiveDirectory.Start(

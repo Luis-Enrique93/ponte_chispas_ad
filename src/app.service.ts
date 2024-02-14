@@ -9,7 +9,7 @@ export class AppService
     public opts: SearchOptions = {
         filter: '(objectClass=*)',
         scope: 'sub',
-        attributes: ['sn', 'cn']
+        attributes: ['dn', 'sn', 'cn']
     }
 
 
@@ -18,7 +18,7 @@ export class AppService
 
     public async getHello()
     {
-        ActiveDirectory.client.search('ou=Users', this.opts, (err, res) =>
+        ActiveDirectory.client.search('', this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
             {

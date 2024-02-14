@@ -1,3 +1,5 @@
+# Comandos interesantes
+
 ssh -i "ponte-chispas.pem" admin@18.216.175.121
 
 cd ~/.ssh
@@ -6,6 +8,26 @@ ssh-add promoton
 
 cd ~/ponte_chispas_ad
 
-
-
 docker ps -a
+
+
+# RECORDATORIO ACTIVE DIRECTORY
+
+CN = Common Name
+OU = Organizational Unit
+DC = Domain Component
+
+
+FUENTE https://www.ietf.org/rfc/rfc2253.txt  
+
+(rfc2253)
+
+CN      commonName
+L       localityName
+ST      stateOrProvinceName
+O       organizationName
+OU      organizationalUnitName
+C       countryName
+STREET  streetAddress
+DC      domainComponent
+UID     userid
