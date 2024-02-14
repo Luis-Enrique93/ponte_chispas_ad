@@ -9,6 +9,7 @@ export class AppService
     public opts: SearchOptions = {
         filter: '(objectClass=*)',
         scope: 'base',
+        // scope: 'sub', para ver sub carpetas
         // attributes: ['dn', 'sn', 'cn']
         attributes: ['sn', 'cn']
     }
@@ -32,6 +33,7 @@ export class AppService
             {
                 console.log('-----')
                 console.log(entry?.pojo)
+                console.log(entry?.pojo.attributes[0].values)
                 console.log('-----')
             })
 
