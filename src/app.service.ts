@@ -18,7 +18,7 @@ export class AppService
 
     public async getHello()
     {
-        ActiveDirectory.client.search('ou=users', this.opts, (err, res) =>
+        ActiveDirectory.client.search('ou=Users', this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
             {
