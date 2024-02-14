@@ -24,7 +24,7 @@ export class AppController
         console.log(loginData)
         console.log('logueando')
 
-        await ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
+        ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
         {
             console.log('err')
             console.log(err)

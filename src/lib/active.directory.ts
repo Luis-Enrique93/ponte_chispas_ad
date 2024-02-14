@@ -1,5 +1,5 @@
 import { createClient, Client } from 'ldapjs'
-// import * as activedirectory from 'activedirectory'
+import * as activedirectory from 'activedirectory'
 
 
 export class ActiveDirectory
@@ -26,13 +26,13 @@ export class ActiveDirectory
         // })
 
         console.log('creando cliente')
-        ActiveDirectory.client = createClient({
-            url: [
-                `ldap://${ip}:${port}`,
-                `ldaps://${ip2}:${port}`
-            ],
-            reconnect: true,
-        })
+        // ActiveDirectory.client = createClient({
+        //     url: [
+        //         `ldap://${ip}:${port}`,
+        //         `ldaps://${ip2}:${port}`
+        //     ],
+        //     reconnect: true,
+        // })
 
         // console.log('logueando')
         // ActiveDirectory.client.bind(user, password, (err) =>
@@ -53,28 +53,30 @@ export class ActiveDirectory
         console.log('Active Directory client:')
         console.log(ActiveDirectory.client)
 
-        // const ad = new activedirectory({
-        //     url: `ldap://${ip}:${port}`,
-        //     baseDN: 'dc=bot,dc=corp',
-        // })
+        const ad = new activedirectory({
+            url: `ldap://${ip}:${port}`,
+            baseDN: 'dc=bot,dc=corp',
+        })
 
-        // ad.authenticate(user, password, (err, auth) =>
-        // {
-        //     if (err)
-        //     {
-        //         console.log('ERROR: ' + JSON.stringify(err))
-        //         return
-        //     }
+        ad.authenticate(user, password, (err, auth) =>
+        {
+            console.log('authenticating...')
 
-        //     if (auth)
-        //     {
-        //         console.log('Authenticated!')
-        //     }
-        //     else
-        //     {
-        //         console.log('Authentication failed!')
-        //     }
-        // })
+            if (err)
+            {
+                console.log('ERROR: ' + JSON.stringify(err))
+                return
+            }
+
+            if (auth)
+            {
+                console.log('Authenticated!')
+            }
+            else
+            {
+                console.log('Authentication failed!')
+            }
+        })
 
         return 'success'
     }
