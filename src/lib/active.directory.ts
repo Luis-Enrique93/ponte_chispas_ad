@@ -1,5 +1,5 @@
 import { createClient, Client } from 'ldapjs'
-import * as activedirectory from 'activedirectory'
+// import * as activedirectory from 'activedirectory'
 
 
 export class ActiveDirectory

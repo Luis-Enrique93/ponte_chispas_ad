@@ -23,22 +23,16 @@ export class AppController
         console.log('loginData')
         console.log(loginData)
         console.log('logueando')
-        try
+
+        await ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
         {
-            await ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
-            {
-                console.log('err')
-                console.log(err)
-                console.log('ejecutando condicionales')
-                // assert.ifError(err);
-                if (err) console.log('err:' + err)
-                else console.log('success')
-            })
-        }
-        catch (e)
-        {
-            console.log(e)
-        }
+            console.log('err')
+            console.log(err)
+            console.log('ejecutando condicionales')
+            // assert.ifError(err);
+            if (err) console.log('err:' + err)
+            else console.log('success')
+        })
 
         return 'ok'
     }
