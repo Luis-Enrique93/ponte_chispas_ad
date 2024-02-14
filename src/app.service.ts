@@ -6,41 +6,47 @@ import { SearchOptions } from 'ldapjs'
 @Injectable()
 export class AppService 
 {
-	public opts: SearchOptions = {
-		filter: '(objectClass=*)',
-		scope: 'sub',
-		attributes: ['sn', 'cn']
-	}
+    public opts: SearchOptions = {
+        filter: '(objectClass=*)',
+        scope: 'sub',
+        attributes: ['sn', 'cn']
+    }
 
 
-	constructor() {}
+    constructor() { }
 
 
-	public async getHello()
-	{
-		ActiveDirectory.client.search('ou=users,ou=system', this.opts, (err, res) => {
-			res.on('searchRequest', (searchRequest) => {
-			  	console.log('searchRequest: ', searchRequest.messageId)
-			})
+    public async getHello()
+    {
+        ActiveDirectory.client.search('ou=users', this.opts, (err, res) =>
+        {
+            res.on('searchRequest', (searchRequest) =>
+            {
+                console.log('searchRequest: ', searchRequest.messageId)
+            })
 
-			// este es el que importa
-			res.on('searchEntry', (entry) => {
-			  	console.log('entry: ' + JSON.stringify(entry.pojo))
-			})
+            // este es el que importa
+            res.on('searchEntry', (entry) =>
+            {
+                console.log('entry: ' + JSON.stringify(entry.pojo))
+            })
 
-			res.on('searchReference', (referral) => {
-			  	console.log('referral: ' + referral.uris.join())
-			})
+            res.on('searchReference', (referral) =>
+            {
+                console.log('referral: ' + referral.uris.join())
+            })
 
-			res.on('error', (err) => {
-				console.error('error: ' + err.message)
-			})
+            res.on('error', (err) =>
+            {
+                console.error('error: ' + err.message)
+            })
 
-			res.on('end', (result) => {
-				console.log('status: ' + result.status)
-			})
-		})
+            res.on('end', (result) =>
+            {
+                console.log('status: ' + result.status)
+            })
+        })
 
-		return 'Hello World!'
-	}
+        return 'Hello World!'
+    }
 }

@@ -40,7 +40,7 @@ export class AppController
     @Get('/search')
     public async search(@Query() searchData: Dto)
     {
-
+        await this.appService.getHello()
     }
 }
 
