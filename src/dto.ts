@@ -17,5 +17,5 @@ export class SearchDto
 {
     @IsNotEmpty()
     @IsString()
-    public readonly search: string
+    public readonly query: string
 }

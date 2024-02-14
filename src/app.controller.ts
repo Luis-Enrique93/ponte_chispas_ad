@@ -19,6 +19,6 @@ export class AppController
     @Get('/search')
     public async search(@Query() search: SearchDto)
     {
-        await this.appService.getHello(search.search)
+        await this.appService.getHello(search.query)
     }
 }
