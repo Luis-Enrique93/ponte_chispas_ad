@@ -20,16 +20,19 @@ export class AppController
     @Get('/login')
     public async login(@Query() loginData: Dto) 
     {
+        console.log('loginData')
+        console.log(loginData)
+        console.log('logueando')
         try
         {
-            ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
+            await ActiveDirectory.client.bind(loginData.user, loginData.password, (err) =>
             {
+                console.log('err')
+                console.log(err)
+                console.log('ejecutando condicionales')
                 // assert.ifError(err);
-                if (err)
-                    console.log('err:' + err)
-
-                else
-                    console.log('success')
+                if (err) console.log('err:' + err)
+                else console.log('success')
             })
         }
         catch (e)

@@ -50,8 +50,8 @@ export class ActiveDirectory
 
 
 
-        // console.log('Active Directory client:')
-        // console.log(ActiveDirectory.client)
+        console.log('Active Directory client:')
+        console.log(ActiveDirectory.client)
 
         // const ad = new activedirectory({
         //     url: `ldap://${ip}:${port}`,
