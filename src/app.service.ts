@@ -30,6 +30,7 @@ export class AppService
             res.on('searchEntry', (entry) =>
             {
                 console.log('----- start -----')
+
                 console.log(entry?.pojo)
 
                 for (const value of entry?.pojo.attributes)
