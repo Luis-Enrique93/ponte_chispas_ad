@@ -25,7 +25,7 @@ export class ActiveDirectory
         // })
 
         ActiveDirectory.client = createClient({
-            url: [`ldap://${ip}:${port}`, `ldaps://${ip2}:${port}`],
+            url: [`ldap://${ip}:${port}/dc=bot,dc=corp`, `ldaps://${ip2}:${port}/dc=bot,dc=corp`],
             reconnect: true,
         })
 
