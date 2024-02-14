@@ -30,7 +30,8 @@ export class AppService
             {
                 console.log('entry: ' + JSON.stringify(entry.pojo))
                 console.log('-----')
-                console.log(entry)
+                console.log(entry?.pojo)
+                console.log(entry?.json)
                 console.log('-----')
             })
 
