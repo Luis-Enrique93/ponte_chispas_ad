@@ -1,4 +1,5 @@
 import { createClient, Client } from 'ldapjs'
+import * as activedirectory from 'activedirectory'
 
 
 export class ActiveDirectory
@@ -24,13 +25,39 @@ export class ActiveDirectory
         //         console.log('success')
         // })
 
-        ActiveDirectory.client = createClient({
-            url: [`ldap://${ip}:${port}/dc=bot,dc=corp`, `ldaps://${ip2}:${port}/dc=bot,dc=corp`],
-            reconnect: true,
+        // ActiveDirectory.client = createClient({
+        //     url: [
+        //         `ldap://${ip}:${port}/dc=bot,dc=corp`,
+        //         `ldaps://${ip2}:${port}/dc=bot,dc=corp`
+        //     ],
+        //     reconnect: true,
+        // })
+
+        // console.log('Active Directory client:')
+        // console.log(ActiveDirectory.client)
+
+        const ad = new activedirectory({
+            url: `ldap://${ip}:${port}`,
+            baseDN: 'dc=bot,dc=corp',
         })
 
-        console.log('Active Directory client:')
-        console.log(ActiveDirectory.client)
+        ad.authenticate(user, password, (err, auth) =>
+        {
+            if (err)
+            {
+                console.log('ERROR: ' + JSON.stringify(err))
+                return
+            }
+
+            if (auth)
+            {
+                console.log('Authenticated!')
+            }
+            else
+            {
+                console.log('Authentication failed!')
+            }
+        })
 
         return 'success'
     }
