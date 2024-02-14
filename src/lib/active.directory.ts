@@ -35,7 +35,7 @@ export class ActiveDirectory
         })
 
         console.log('logueando')
-        ActiveDirectory.client.bind(user, password, (err) =>
+        ActiveDirectory.client.bind(`cn=${user}`, password, (err) =>
         {
             // assert.ifError(err);
             if (err)
