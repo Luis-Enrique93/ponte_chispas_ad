@@ -18,7 +18,7 @@ export class AppService
 
     public async getHello()
     {
-        ActiveDirectory.client.search('dc=bot,dc=corp', this.opts, (err, res) =>
+        ActiveDirectory.client.search('cn=users,dc=bot,dc=corp', this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
             {
