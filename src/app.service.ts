@@ -8,7 +8,7 @@ export class AppService
 {
     public opts: SearchOptions = {
         filter: '(objectClass=*)',
-        scope: 'sub',
+        scope: 'one',
         // attributes: ['dn', 'sn', 'cn']
         attributes: ['sn', 'cn']
     }
