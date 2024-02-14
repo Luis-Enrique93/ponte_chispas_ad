@@ -10,7 +10,7 @@ cd ~/ponte_chispas_ad
 
 docker ps -a
 
-curl "http://localhost:4000/search"
+curl "http://localhost:4000/search?query=ou=users,ou=system"
 
 
 # RECORDATORIO ACTIVE DIRECTORY
