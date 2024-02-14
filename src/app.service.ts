@@ -9,13 +9,15 @@ export class AppService
     public opts: SearchOptions = {
         filter: '(objectClass=*)',
         scope: 'sub',
-        attributes: ['dn', 'sn', 'cn']
+        // attributes: ['dn', 'sn', 'cn']
+        attributes: ['sn', 'cn']
     }
 
 
     constructor() { }
 
-
+    // promotong
+    // Administrator
     public async getHello()
     {
         ActiveDirectory.client.search('cn=users,dc=bot,dc=corp', this.opts, (err, res) =>
@@ -28,10 +30,8 @@ export class AppService
             // este es el que importa
             res.on('searchEntry', (entry) =>
             {
-                console.log('entry: ' + JSON.stringify(entry.pojo))
                 console.log('-----')
                 console.log(entry?.pojo)
-                console.log(entry?.json)
                 console.log('-----')
             })
 
