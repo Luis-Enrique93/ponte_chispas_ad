@@ -32,7 +32,12 @@ export class AppService
             {
                 console.log('----- start -----')
                 console.log(entry?.pojo)
-                console.log(entry?.pojo.attributes[0].values)
+
+                for (const value of entry?.pojo.attributes)
+                {
+                    console.log(value.values)
+                }
+
                 console.log('----- end -----')
             })
 
