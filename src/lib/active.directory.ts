@@ -26,59 +26,59 @@ export class ActiveDirectory
         // })
 
         console.log('creando cliente')
-        // ActiveDirectory.client = createClient({
-        //     url: [
-        //         `ldap://${ip}:${port}`,
-        //         `ldaps://${ip2}:${port}`
-        //     ],
-        //     reconnect: true,
-        // })
-
-        // console.log('logueando')
-        // ActiveDirectory.client.bind(user, password, (err) =>
-        // {
-        //     // assert.ifError(err);
-        //     if (err)
-        //         console.log('err:' + err)
-
-        //     else
-        //     {
-        //         console.log('success')
-        //         console.log('logueado!')
-        //     }
-        // })
-
-
-
-        console.log('Active Directory client:')
-        console.log(ActiveDirectory.client)
-
-        const ad = new activedirectory({
-            url: `ldap://${ip}:${port}`,
-            baseDN: 'dc=bot,dc=corp',
+        ActiveDirectory.client = createClient({
+            url: [
+                `ldap://${ip}:${port}`,
+                `ldaps://${ip2}:${port}`
+            ],
+            reconnect: true,
         })
 
-        console.log(ad)
-
-        ad.authenticate(user, password, (err, auth) =>
+        console.log('logueando')
+        ActiveDirectory.client.bind(user, password, (err) =>
         {
-            console.log('authenticating...')
-
+            // assert.ifError(err);
             if (err)
-            {
-                console.log('ERROR: ' + JSON.stringify(err))
-                return
-            }
+                console.log('err:' + err)
 
-            if (auth)
-            {
-                console.log('Authenticated!')
-            }
             else
             {
-                console.log('Authentication failed!')
+                console.log('success')
+                console.log('logueado!')
             }
         })
+
+
+
+        // console.log('Active Directory client:')
+        // console.log(ActiveDirectory.client)
+
+        // const ad = new activedirectory({
+        //     url: `ldap://${ip}:${port}`,
+        //     baseDN: 'dc=bot,dc=corp',
+        // })
+
+        // console.log(ad)
+
+        // ad.authenticate(user, password, (err, auth) =>
+        // {
+        //     console.log('authenticating...')
+
+        //     if (err)
+        //     {
+        //         console.log('ERROR: ' + JSON.stringify(err))
+        //         return
+        //     }
+
+        //     if (auth)
+        //     {
+        //         console.log('Authenticated!')
+        //     }
+        //     else
+        //     {
+        //         console.log('Authentication failed!')
+        //     }
+        // })
 
         return 'success'
     }
