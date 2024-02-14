@@ -29,6 +29,9 @@ export class AppService
             res.on('searchEntry', (entry) =>
             {
                 console.log('entry: ' + JSON.stringify(entry.pojo))
+                console.log('-----')
+                console.log(entry)
+                console.log('-----')
             })
 
             res.on('searchReference', (referral) =>
