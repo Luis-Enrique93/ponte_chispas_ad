@@ -6,6 +6,7 @@ import { ValidationPipe } from '@nestjs/common'
 
 async function bootstrap() 
 {
+    console.log('variables de entorno')
     console.log(process.env)
     console.log(process.env.ACTIVE_DIRECTORY_PORT)
     console.log(process.env.ACTIVE_DIRECTORY_IP)

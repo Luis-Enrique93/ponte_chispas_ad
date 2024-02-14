@@ -36,6 +36,8 @@ export class AppController
         {
             console.log(e)
         }
+
+        return 'ok'
     }
 
     @Get('/search')

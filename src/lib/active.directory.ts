@@ -34,19 +34,19 @@ export class ActiveDirectory
             reconnect: true,
         })
 
-        console.log('logueando')
-        ActiveDirectory.client.bind(user, password, (err) =>
-        {
-            // assert.ifError(err);
-            if (err)
-                console.log('err:' + err)
+        // console.log('logueando')
+        // ActiveDirectory.client.bind(user, password, (err) =>
+        // {
+        //     // assert.ifError(err);
+        //     if (err)
+        //         console.log('err:' + err)
 
-            else
-            {
-                console.log('success')
-                console.log('logueado!')
-            }
-        })
+        //     else
+        //     {
+        //         console.log('success')
+        //         console.log('logueado!')
+        //     }
+        // })
 
 
 
