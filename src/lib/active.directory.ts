@@ -58,6 +58,8 @@ export class ActiveDirectory
             baseDN: 'dc=bot,dc=corp',
         })
 
+        console.log(ad)
+
         ad.authenticate(user, password, (err, auth) =>
         {
             console.log('authenticating...')
