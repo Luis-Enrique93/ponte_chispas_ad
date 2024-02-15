@@ -21,6 +21,8 @@ export class AppService
     {
         console.log('************************* start search *************************')
 
+        const data = []
+
         ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
@@ -41,6 +43,8 @@ export class AppService
                 }
 
                 console.log(obj)
+
+                data.push(obj)
             })
 
             res.on('searchReference', (referral) =>
@@ -55,12 +59,12 @@ export class AppService
 
             res.on('end', (result) =>
             {
+                console.log('ejecutando end')
                 console.log('status: ' + result.status)
+                return data
             })
         })
 
         console.log('************************* end search*************************')
-
-        return 'Hello World!'
     }
 }
