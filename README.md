@@ -8,7 +8,13 @@ ssh-add promoton
 
 cd ~/ponte_chispas_ad
 
+python3 auto.py
+
+curl "http://localhost:4000/search"
+
 docker ps -a
+
+docker logs 
 
 curl "http://localhost:4000/search?query=ou=users,ou=system"
 

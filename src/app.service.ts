@@ -19,6 +19,8 @@ export class AppService
 
     public async getHello(search: string = 'cn=users,dc=bot,dc=corp')
     {
+        console.log('************************* start search *************************')
+
         ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
         {
             res.on('searchRequest', (searchRequest) =>
@@ -31,9 +33,11 @@ export class AppService
             {
                 const obj = {}
 
-                for (const value of entry?.pojo.attributes)
+                obj['objectName'] = entry?.pojo?.objectName
+
+                for (const value of entry?.pojo?.attributes)
                 {
-                    obj[value.type] = value.values[0]
+                    obj[value?.type] = value?.values[0]
                 }
 
                 console.log(obj)
@@ -54,6 +58,8 @@ export class AppService
                 console.log('status: ' + result.status)
             })
         })
+
+        console.log('************************* end search*************************')
 
         return 'Hello World!'
     }
