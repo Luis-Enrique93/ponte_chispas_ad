@@ -14,26 +14,14 @@ export class AppService
     }
 
 
-    constructor() { }
-
-
-    public async getHello(search: string = 'cn=users,dc=bot,dc=corp')
+    public async getHello(search: string = 'cn=users,dc=bot,dc=corp'): Promise<any>
     {
-        console.log('************************* start search *************************')
-
-
         return new Promise((resolve, reject) =>
         {
             const data = []
 
             ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
             {
-                res.on('searchRequest', (searchRequest) =>
-                {
-                    console.log('searchRequest: ', searchRequest.messageId)
-                })
-
-                // este es el que importa
                 res.on('searchEntry', (entry) =>
                 {
                     const obj = {}
@@ -50,11 +38,6 @@ export class AppService
                     data.push(obj)
                 })
 
-                res.on('searchReference', (referral) =>
-                {
-                    console.log('referral: ' + referral.uris.join())
-                })
-
                 res.on('error', (err) =>
                 {
                     console.error('error: ' + err.message)
@@ -68,8 +51,6 @@ export class AppService
                     resolve(data)
                 })
             })
-
-            console.log('************************* end search*************************')
         })
     }
 }
