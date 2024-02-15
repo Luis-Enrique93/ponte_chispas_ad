@@ -36,6 +36,7 @@ export class AppService
                     obj[value.type] = value.values[0]
                 }
 
+                console.log(obj)
             })
 
             res.on('searchReference', (referral) =>
