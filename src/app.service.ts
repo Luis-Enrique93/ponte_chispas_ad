@@ -21,50 +21,55 @@ export class AppService
     {
         console.log('************************* start search *************************')
 
-        const data = []
 
-        ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
+        return new Promise((resolve, reject) =>
         {
-            res.on('searchRequest', (searchRequest) =>
+            const data = []
+
+            ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
             {
-                console.log('searchRequest: ', searchRequest.messageId)
-            })
-
-            // este es el que importa
-            res.on('searchEntry', (entry) =>
-            {
-                const obj = {}
-
-                obj['objectName'] = entry?.pojo?.objectName
-
-                for (const value of entry?.pojo?.attributes)
+                res.on('searchRequest', (searchRequest) =>
                 {
-                    obj[value?.type] = value?.values[0]
-                }
+                    console.log('searchRequest: ', searchRequest.messageId)
+                })
 
-                console.log(obj)
+                // este es el que importa
+                res.on('searchEntry', (entry) =>
+                {
+                    const obj = {}
 
-                data.push(obj)
+                    obj['objectName'] = entry?.pojo?.objectName
+
+                    for (const value of entry?.pojo?.attributes)
+                    {
+                        obj[value?.type] = value?.values[0]
+                    }
+
+                    console.log(obj)
+
+                    data.push(obj)
+                })
+
+                res.on('searchReference', (referral) =>
+                {
+                    console.log('referral: ' + referral.uris.join())
+                })
+
+                res.on('error', (err) =>
+                {
+                    console.error('error: ' + err.message)
+                    reject(err)
+                })
+
+                res.on('end', (result) =>
+                {
+                    console.log('ejecutando end')
+                    console.log('status: ' + result.status)
+                    resolve(data)
+                })
             })
 
-            res.on('searchReference', (referral) =>
-            {
-                console.log('referral: ' + referral.uris.join())
-            })
-
-            res.on('error', (err) =>
-            {
-                console.error('error: ' + err.message)
-            })
-
-            res.on('end', (result) =>
-            {
-                console.log('ejecutando end')
-                console.log('status: ' + result.status)
-                return data
-            })
+            console.log('************************* end search*************************')
         })
-
-        console.log('************************* end search*************************')
     }
 }
