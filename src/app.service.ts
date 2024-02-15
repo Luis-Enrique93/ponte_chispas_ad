@@ -29,16 +29,13 @@ export class AppService
             // este es el que importa
             res.on('searchEntry', (entry) =>
             {
-                console.log('----- start -----')
-
-                console.log(entry?.pojo)
+                const obj = {}
 
                 for (const value of entry?.pojo.attributes)
                 {
-                    console.log(value.values)
+                    obj[value.type] = value.values[0]
                 }
 
-                console.log('----- end -----')
             })
 
             res.on('searchReference', (referral) =>
