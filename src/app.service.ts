@@ -14,6 +14,31 @@ export class AppService
     }
 
 
+    public async securityGroup()
+    {
+        ActiveDirectory.client.search("OU=Agents,OU=Banrural I GT,OU=Users Production W10,DC=BOT,DC=corp", this.opts, (err, res) =>
+        {
+            res.on('searchEntry', (entry) =>
+            {
+                console.log('========================================================================')
+                console.log(entry?.pojo)
+                console.log(entry?.pojo?.objectName)
+                console.log('========================================================================')
+            })
+            res.on('error', (err) =>
+            {
+                console.error('error: ' + err.message)
+            })
+
+            res.on('end', (result) =>
+            {
+                console.log('ejecutando end')
+                console.log('status: ' + result.status)
+            })
+        })
+    }
+
+
     public async getHello(search: string = 'cn=users,dc=bot,dc=corp'): Promise<any>
     {
         return new Promise((resolve, reject) =>
