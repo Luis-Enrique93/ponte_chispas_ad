@@ -21,4 +21,11 @@ export class AppController
     {
         return await this.appService.getHello(search.query)
     }
+
+
+    @Get('/sg')
+    public async sg()
+    {
+        return await this.appService.securityGroup()
+    }
 }
