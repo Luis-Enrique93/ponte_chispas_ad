@@ -17,6 +17,13 @@ export class AppController
 
 
     @Get('/search')
+    public async users(@Query() search: SearchDto)
+    {
+        return await this.appService.getHello(search.query)
+    }
+
+
+    @Get('/search')
     public async search(@Query() search: SearchDto)
     {
         return await this.appService.getHello(search.query)
